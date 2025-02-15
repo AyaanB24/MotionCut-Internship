@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bucket List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        My Bucket List
+    </header>
+    
+    <main>
+        <div class="input-container">
+            <input type="text" id="new-item" placeholder="Add a new bucket list item...">
+            <button onclick="addItem()">Add</button>
+        </div>
+        <ul class="bucket-list" id="bucket-list">
+            <li><i class="far fa-circle"></i> Learn a new language <button onclick="removeItem(this)">Delete</button></li>
+            <li><i class="far fa-circle"></i> Write a book <button onclick="removeItem(this)">Delete</button></li>
+        </ul>
+    </main>
+    
+    <footer>
+        &copy; 2025 My Bucket List
+    </footer>
+    
+    <script>
+        function addItem() {
+            let input = document.getElementById("new-item");
+            let itemText = input.value.trim();
+            if (itemText !== "") {
+                let list = document.getElementById("bucket-list");
+                let li = document.createElement("li");
+                li.innerHTML = `<i class='far fa-circle'></i> ${itemText} <button onclick='removeItem(this)'>Delete</button>`;
+                list.appendChild(li);
+                input.value = "";
+            }
+        }
+        
+        function removeItem(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
